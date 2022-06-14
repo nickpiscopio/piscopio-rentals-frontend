@@ -13,7 +13,7 @@ export class RegistrationComponent {
 
   register(): void {
     this.registrationService.register({
-      durationDateFrom: "1/10/22",
+      durationDateFrom: "1/11/22",
       durationDateTo: "2/5/22",
       namePrinted: "John A. Ally",
       addressStreet: "123 Address Lane Drive",
