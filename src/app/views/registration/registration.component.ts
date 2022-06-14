@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { environment } from 'src/environments/environment';
+import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +12,10 @@ import { RegistrationService } from 'src/app/services/registration.service';
 })
 export class RegistrationComponent {
 
-  constructor(private registrationService: RegistrationService) { }
+  constructor(
+    public dialog: MatDialog,
+    private registrationService: RegistrationService
+  ) { }
 
   register(): void {
     this.registrationService.register({
@@ -38,8 +44,45 @@ export class RegistrationComponent {
       vehicle7PlateNumber: "123456",
       vehicle8PlateState: "NA",
       vehicle8PlateNumber: "g46356"
-    }).subscribe(response => {
-      console.log("response: ", response);
+    }).subscribe({
+      // Documentation: https://rxjs.dev/deprecations/subscribe-arguments
+      next: v => {
+        this.openPositiveDialog();
+      },
+      error: error => {
+        this.openErrorDialog()
+
+        console.error("Error submitting registration form: ", error);
+      },
+      complete: () => { }
     })
+  }
+
+  private openPositiveDialog() {
+    this.openDialog(
+      'Success!',
+      `You are on your way! We'll let you know if you need to complete anything else. If you have any questions, please contact:\n\n${environment.propertyManager.name}\n${environment.propertyManager.phoneNumber}\n${environment.propertyManager.email}`,
+      );
+  }
+
+  private openErrorDialog() {
+    this.openDialog(
+      'An error occurred',
+      `There was an error when submitting the registrion form. Please try again later or contact:\n\n${environment.propertyManager.name}\n${environment.propertyManager.phoneNumber}\n${environment.propertyManager.email}`,
+      );
+  }
+
+  private openDialog(title: string, content: string, positiveButton?: string, negativeButton?: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+        title: title,
+        content: content,
+        positiveButton: positiveButton,
+        negativeButton: negativeButton
+    };
+
+    this.dialog.open(GenericDialogComponent, dialogConfig);
   }
 }
