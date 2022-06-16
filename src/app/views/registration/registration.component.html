@@ -1,2 +1,68 @@
-<p>Registration Page</p>
-<button (click)="register()">Register</button>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <p>Registration Page</p>
+        <form [formGroup]="form" (ngSubmit)="register()">
+            <p>Duration of Stay</p>
+            <p>
+                <label>From: (Month/Day/Year)</label>
+                <input type="text" formControlName="durationDateFrom">
+            </p>
+            <p>
+                <label>To: (Month/Day/Year)</label>
+                <input type="text" formControlName="durationDateTo">
+            </p>
+        
+            <p>
+                <label>Your Name:</label>
+                <input type="text" formControlName="namePrinted">
+            </p>
+        
+            <p>Your Mailing Address</p>
+            <p>
+                <label>House Number & Street:</label>
+                <input type="text" formControlName="addressStreet">
+            </p>
+            <p>
+                <label>City:</label>
+                <input type="text" formControlName="addressCity">
+            </p>
+            <p>
+                <label>State:</label>
+                <input type="text" formControlName="addressState">
+            </p>
+            <p>
+                <label>Zipcode:</label>
+                <input type="text" formControlName="addressZipcode">
+            </p>
+        
+            <p>Your Phone Number</p>
+            <p>
+                <label>Primary Phone Number:</label>
+                <input type="text" formControlName="phoneNumber">
+            </p>
+            <p>
+                <label>Secondary Phone Number (optional):</label>
+                <input type="text" formControlName="phoneNumber2">
+            </p>
+        
+            <p>List all license plates staying at 153 Keats Lane for the duration of the stay. If a rental car is being used, please write "Rental" next to the Plate Number.</p>
+            <div *ngFor="let i of plateLoopNumbers">
+                <p>
+                    <label>Vehicle {{i + 1}} Plate State:</label>
+                    <input type="text" formControlName="vehicle{{i + 1}}PlateState">
+                </p>
+        
+                <p>
+                    <label>Vehicle {{i + 1}} Plate Number:</label>
+                    <input type="text" formControlName="vehicle{{i + 1}}PlateNumber">
+                </p>
+            </div>
+        
+            <p>
+                <button type="submit" [disabled]="!form.valid">Register</button>
+            </p>
+        </form>
+      </div>
+    </div>
+  </div>
