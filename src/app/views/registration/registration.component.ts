@@ -41,40 +41,13 @@ export class RegistrationComponent {
   }
 
   register(): void {
-    // const registration: Registration = {
-    //   durationDateFrom: "1/11/22",
-    //   durationDateTo: "2/5/22",
-    //   namePrinted: "John A. Ally",
-    //   addressStreet: "123 Address Lane Drive",
-    //   addressCity: "Bensalem",
-    //   addressState: "PA",
-    //   addressZipcode: "19020",
-    //   phoneNumber: "2155555555",
-    //   phoneNumber2: "2675555555",
-    //   vehicle1PlateState: "PA",
-    //   vehicle1PlateNumber: "123",
-    //   vehicle2PlateState: "NJ",
-    //   vehicle2PlateNumber: "456",
-    //   vehicle3PlateState: "NC",
-    //   vehicle3PlateNumber: "789",
-    //   vehicle4PlateState: "CA",
-    //   vehicle4PlateNumber: "357",
-    //   vehicle5PlateState: "TT",
-    //   vehicle5PlateNumber: "1234",
-    //   vehicle6PlateState: "RF",
-    //   vehicle6PlateNumber: "8920",
-    //   vehicle7PlateState: "PE",
-    //   vehicle7PlateNumber: "123456",
-    //   vehicle8PlateState: "NA",
-    //   vehicle8PlateNumber: "g46356"
-    // }
-    if (this.registration == undefined) {
+    this.augmentRegistration()
+
+    if (this.registration == undefined || !this.registrationForm.valid) {
       this.openFormErrorDialog()
 
       return;
     }
-
-    this.augmentRegistration()
 
     this.registrationService.register(this.registration).subscribe({
       // Documentation: https://rxjs.dev/deprecations/subscribe-arguments
@@ -199,7 +172,7 @@ export class RegistrationComponent {
       );
   }
 
-  private openDialog(title: this.registrationForm.controls[RegistrationForm.].value,, content: this.registrationForm.controls[RegistrationForm.].value,, positiveButton?: this.registrationForm.controls[RegistrationForm.].value,, negativeButton?: this.registrationForm.controls[RegistrationForm.].value,): void {
+  private openDialog(title: string, content: string, positiveButton?:string, negativeButton?: string): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
