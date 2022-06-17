@@ -1,67 +1,75 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <p>Registration Page</p>
+        <h1>Registration Page</h1>
         <form [formGroup]="form" (ngSubmit)="register()">
-            <p>Duration of Stay</p>
-            <p>
-                <label>From: (Month/Day/Year)</label>
+            <h2>Duration of Stay</h2>
+            <h3>
+                <label>From (Month/Day/Year):</label>
                 <input type="text" formControlName="durationDateFrom">
-            </p>
-            <p>
-                <label>To: (Month/Day/Year)</label>
+            </h3>
+            <h3>
+                <label>To (Month/Day/Year):</label>
                 <input type="text" formControlName="durationDateTo">
-            </p>
+            </h3>
         
-            <p>
-                <label>Your Name:</label>
-                <input type="text" formControlName="namePrinted">
-            </p>
-        
-            <p>Your Mailing Address</p>
-            <p>
+            <h2>Your Mailing Address</h2>
+            <h3>
                 <label>House Number & Street:</label>
                 <input type="text" formControlName="addressStreet">
-            </p>
-            <p>
+            </h3>
+            <h3>
                 <label>City:</label>
                 <input type="text" formControlName="addressCity">
-            </p>
-            <p>
+            </h3>
+            <h3>
                 <label>State:</label>
                 <input type="text" formControlName="addressState">
-            </p>
-            <p>
+            </h3>
+            <h3>
                 <label>Zipcode:</label>
                 <input type="text" formControlName="addressZipcode">
-            </p>
+            </h3>
         
-            <p>Your Phone Number</p>
-            <p>
+            <h2>Your Phone Number</h2>
+            <h3>
                 <label>Primary Phone Number:</label>
                 <input type="text" formControlName="phoneNumber">
-            </p>
-            <p>
+            </h3>
+            <h3>
                 <label>Secondary Phone Number (optional):</label>
                 <input type="text" formControlName="phoneNumber2">
-            </p>
-        
-            <p>List all license plates staying at 153 Keats Lane for the duration of the stay. If a rental car is being used, please write "Rental" next to the Plate Number.</p>
+            </h3>
+
+            <h2>Vehicles</h2> <button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
+            <p>List all vehichle license plates staying at 153 Keats Lane for part or all of duration of the stay. If a rental car is being used, please indicate that.</p>
+            
             <div *ngFor="let i of plateLoopNumbers">
+                <h3>Vehicle {{i + 1}}</h3>
                 <p>
-                    <label>Vehicle {{i + 1}} Plate State:</label>
+                    <label>Plate State:</label>
                     <input type="text" formControlName="vehicle{{i + 1}}PlateState">
                 </p>
         
                 <p>
-                    <label>Vehicle {{i + 1}} Plate Number:</label>
+                    <label>Plate Number:</label>
                     <input type="text" formControlName="vehicle{{i + 1}}PlateNumber">
                 </p>
+                
+                <p>
+                    <label>This car is a rental:</label>
+                    <input type="checkbox" formControlName="vehicle{{i + 1}}Rental" />
+                </p>
             </div>
-        
+
+            <p>By typing your full legal name below, you agree to digitally sign the Towamensing Trails Property Owners Association Short Term Rental Registration Form.</p>
             <p>
-                <button type="submit" [disabled]="!form.valid">Register</button>
+                <label>Your Full Legal Name:</label>
+                <input type="text" formControlName="namePrinted">
             </p>
+        
+      
+            <button type="submit" [disabled]="!form.valid">Register</button>
         </form>
       </div>
     </div>

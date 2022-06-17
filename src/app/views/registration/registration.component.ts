@@ -14,7 +14,9 @@ import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog
 })
 export class RegistrationComponent {
   private registration: Registration | undefined
-  plateLoopNumbers = Array(8).fill(0).map((x,i)=>i)
+  private totalVehicles = 1
+  private vehicleThreshold = 8
+  plateLoopNumbers: number[] | undefined
 
   form = new FormGroup({
     "durationDateFrom": new FormControl("", Validators.required),
@@ -28,26 +30,48 @@ export class RegistrationComponent {
     "phoneNumber2": new FormControl(""),
     "vehicle1PlateState": new FormControl(""),
     "vehicle1PlateNumber": new FormControl(""),
+    "vehicle1Rental": new FormControl(""),
     "vehicle2PlateState": new FormControl(""),
     "vehicle2PlateNumber": new FormControl(""),
+    "vehicle2Rental": new FormControl(""),
     "vehicle3PlateState": new FormControl(""),
     "vehicle3PlateNumber": new FormControl(""),
+    "vehicle3Rental": new FormControl(""),
     "vehicle4PlateState": new FormControl(""),
     "vehicle4PlateNumber": new FormControl(""),
+    "vehicle4Rental": new FormControl(""),
     "vehicle5PlateState": new FormControl(""),
     "vehicle5PlateNumber": new FormControl(""),
+    "vehicle5Rental": new FormControl(""),
     "vehicle6PlateState": new FormControl(""),
     "vehicle6PlateNumber": new FormControl(""),
+    "vehicle6Rental": new FormControl(""),
     "vehicle7PlateState": new FormControl(""),
     "vehicle7PlateNumber": new FormControl(""),
+    "vehicle7Rental": new FormControl(""),
     "vehicle8PlateState": new FormControl(""),
     "vehicle8PlateNumber": new FormControl(""),
+    "vehicle8Rental": new FormControl(""),
 });
 
   constructor(
     public dialog: MatDialog,
     private registrationService: RegistrationService
-  ) { }
+  ) { 
+    this.setVehicleArray()
+  }
+
+  addAnotherVehicle(): void {
+    if (this.totalVehicles < this.vehicleThreshold) {
+      this.totalVehicles++
+
+      this.setVehicleArray()
+
+      return
+    }
+
+    this.openVehicleLimitExceededDialog()
+  }
 
   register(): void {
     // const registration: Registration = {
@@ -97,28 +121,39 @@ export class RegistrationComponent {
     })
   }
 
-  private openPositiveDialog() {
+  private setVehicleArray(): void {
+    this.plateLoopNumbers = Array(this.totalVehicles).fill(0).map((x,i)=>i)
+  }
+
+  private openPositiveDialog(): void {
     this.openDialog(
       'Success!',
       `You are on your way! We'll let you know if you need to complete anything else. If you have any questions, please contact:\n\n${environment.propertyManager.name}\n${environment.propertyManager.phoneNumber}\n${environment.propertyManager.email}`,
       );
   }
 
-  private openFormErrorDialog() {
+  private openVehicleLimitExceededDialog(): void {
+    this.openDialog(
+      'Vehicle Limit Met',
+      `You cannot have more than ${this.vehicleThreshold} vehicles at the property.`,
+      );
+  }
+
+  private openFormErrorDialog(): void {
     this.openDialog(
       'Invalid Form Submission',
       'Please fill out the required forms before continuing.',
       );
   }
 
-  private openErrorDialog() {
+  private openErrorDialog(): void {
     this.openDialog(
       'An error occurred',
       `There was an error when submitting the registrion form. Please try again later or contact:\n\n${environment.propertyManager.name}\n${environment.propertyManager.phoneNumber}\n${environment.propertyManager.email}`,
       );
   }
 
-  private openDialog(title: string, content: string, positiveButton?: string, negativeButton?: string) {
+  private openDialog(title: string, content: string, positiveButton?: string, negativeButton?: string): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
