@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { RegistrationForm } from 'src/app/constants/registration-form.constant';
 import { Registration } from 'src/app/interfaces/registration.interface';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { environment } from 'src/environments/environment';
@@ -15,44 +16,10 @@ import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog
 export class RegistrationComponent {
   private registration: Registration | undefined
   private totalVehicles = 1
-  private vehicleThreshold = 8
+  private vehicleThreshold: number = 8
   plateLoopNumbers: number[] | undefined
 
-  form = new FormGroup({
-    "durationDateFrom": new FormControl("", Validators.required),
-    "durationDateTo": new FormControl("", Validators.required),
-    "namePrinted": new FormControl("", Validators.required),
-    "addressCity": new FormControl("", Validators.required),
-    "addressStreet": new FormControl("", Validators.required),
-    "addressState": new FormControl("", Validators.required),
-    "addressZipcode": new FormControl("", Validators.required),
-    "phoneNumber": new FormControl("", Validators.required),
-    "phoneNumber2": new FormControl(""),
-    "vehicle1PlateState": new FormControl(""),
-    "vehicle1PlateNumber": new FormControl(""),
-    "vehicle1Rental": new FormControl(""),
-    "vehicle2PlateState": new FormControl(""),
-    "vehicle2PlateNumber": new FormControl(""),
-    "vehicle2Rental": new FormControl(""),
-    "vehicle3PlateState": new FormControl(""),
-    "vehicle3PlateNumber": new FormControl(""),
-    "vehicle3Rental": new FormControl(""),
-    "vehicle4PlateState": new FormControl(""),
-    "vehicle4PlateNumber": new FormControl(""),
-    "vehicle4Rental": new FormControl(""),
-    "vehicle5PlateState": new FormControl(""),
-    "vehicle5PlateNumber": new FormControl(""),
-    "vehicle5Rental": new FormControl(""),
-    "vehicle6PlateState": new FormControl(""),
-    "vehicle6PlateNumber": new FormControl(""),
-    "vehicle6Rental": new FormControl(""),
-    "vehicle7PlateState": new FormControl(""),
-    "vehicle7PlateNumber": new FormControl(""),
-    "vehicle7Rental": new FormControl(""),
-    "vehicle8PlateState": new FormControl(""),
-    "vehicle8PlateNumber": new FormControl(""),
-    "vehicle8Rental": new FormControl(""),
-});
+  registrationForm = this.getRegistrationFormGroup();
 
   constructor(
     public dialog: MatDialog,
@@ -107,6 +74,8 @@ export class RegistrationComponent {
       return;
     }
 
+    this.augmentRegistration()
+
     this.registrationService.register(this.registration).subscribe({
       // Documentation: https://rxjs.dev/deprecations/subscribe-arguments
       next: v => {
@@ -119,6 +88,83 @@ export class RegistrationComponent {
       },
       complete: () => { }
     })
+  }
+
+  private getRegistrationFormGroup() {
+    const formGroup: any = {}
+    formGroup[RegistrationForm.durationDateFrom] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.durationDateTo] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.namePrinted] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.addressCity] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.addressStreet] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.addressState] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.addressZipcode] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.phoneNumber] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.phoneNumber2] = new FormControl("");
+    formGroup[RegistrationForm.vehicle1PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle1PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle1Rental] = new FormControl("");
+    formGroup[RegistrationForm.vehicle2PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle2PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle2Rental] = new FormControl("");
+    formGroup[RegistrationForm.vehicle3PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle3PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle3Rental] = new FormControl("");
+    formGroup[RegistrationForm.vehicle4PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle4PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle4Rental] = new FormControl("");
+    formGroup[RegistrationForm.vehicle5PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle5PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle5Rental] = new FormControl("");
+    formGroup[RegistrationForm.vehicle6PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle6PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle6Rental] = new FormControl("");
+    formGroup[RegistrationForm.vehicle7PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle7PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle7Rental] = new FormControl("");
+    formGroup[RegistrationForm.vehicle8PlateState] = new FormControl("");
+    formGroup[RegistrationForm.vehicle8PlateNumber] = new FormControl("");
+    formGroup[RegistrationForm.vehicle8Rental] = new FormControl("");
+    return new FormGroup(formGroup);
+  }
+
+  private augmentRegistration(): void {
+    this.registration = {
+      durationDateFrom: this.registrationForm.controls[RegistrationForm.durationDateFrom].value,
+      durationDateTo: this.registrationForm.controls[RegistrationForm.durationDateTo].value,
+      namePrinted: this.registrationForm.controls[RegistrationForm.namePrinted].value,
+      addressCity: this.registrationForm.controls[RegistrationForm.addressCity].value,
+      addressStreet: this.registrationForm.controls[RegistrationForm.addressStreet].value,
+      addressState: this.registrationForm.controls[RegistrationForm.addressState].value,
+      addressZipcode: this.registrationForm.controls[RegistrationForm.addressZipcode].value,
+      phoneNumber: this.registrationForm.controls[RegistrationForm.phoneNumber].value,
+      phoneNumber2: this.registrationForm.controls[RegistrationForm.phoneNumber2].value,
+      vehicle1PlateState: this.registrationForm.controls[RegistrationForm.vehicle1PlateState].value,
+      vehicle1PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle1PlateNumber, RegistrationForm.vehicle1Rental),
+      vehicle2PlateState: this.registrationForm.controls[RegistrationForm.vehicle2PlateState].value,
+      vehicle2PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle2PlateNumber, RegistrationForm.vehicle2Rental),
+      vehicle3PlateState: this.registrationForm.controls[RegistrationForm.vehicle3PlateState].value,
+      vehicle3PlateNumber:this.getVehiclePlateNumber(RegistrationForm.vehicle3PlateNumber, RegistrationForm.vehicle3Rental),
+      vehicle4PlateState: this.registrationForm.controls[RegistrationForm.vehicle4PlateState].value,
+      vehicle4PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle4PlateNumber, RegistrationForm.vehicle4Rental),
+      vehicle5PlateState: this.registrationForm.controls[RegistrationForm.vehicle5PlateState].value,
+      vehicle5PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle5PlateNumber, RegistrationForm.vehicle5Rental),
+      vehicle6PlateState: this.registrationForm.controls[RegistrationForm.vehicle6PlateState].value,
+      vehicle6PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle6PlateNumber, RegistrationForm.vehicle6Rental),
+      vehicle7PlateState: this.registrationForm.controls[RegistrationForm.vehicle7PlateState].value,
+      vehicle7PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle7PlateNumber, RegistrationForm.vehicle7Rental),
+      vehicle8PlateState: this.registrationForm.controls[RegistrationForm.vehicle8PlateState].value,
+      vehicle8PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle8PlateNumber, RegistrationForm.vehicle8Rental)
+    }
+  }
+
+  private getVehiclePlateNumber(plateVariable: string, rentalVariable: string): string {
+    const isARental = this.registrationForm.controls[rentalVariable].value
+    let plateNumber = this.registrationForm.controls[plateVariable].value
+    if (isARental) {
+      plateNumber += " Rental";
+    }
+    return plateNumber
   }
 
   private setVehicleArray(): void {
@@ -153,7 +199,7 @@ export class RegistrationComponent {
       );
   }
 
-  private openDialog(title: string, content: string, positiveButton?: string, negativeButton?: string): void {
+  private openDialog(title: this.registrationForm.controls[RegistrationForm.].value,, content: this.registrationForm.controls[RegistrationForm.].value,, positiveButton?: this.registrationForm.controls[RegistrationForm.].value,, negativeButton?: this.registrationForm.controls[RegistrationForm.].value,): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
