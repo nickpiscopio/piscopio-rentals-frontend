@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './views/app.component';
@@ -21,11 +28,17 @@ import { GenericDialogComponent } from './views/dialogs/generic-dialog/generic-d
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ DatePipe ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

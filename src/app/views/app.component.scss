@@ -1,0 +1,19 @@
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+#nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #FFFFFF;
+    padding: 16px;
+    box-shadow: 0 1px 3px #888888
+}
+
+#content {
+    margin-top: 65px;
+    padding: 16px 0;
+}

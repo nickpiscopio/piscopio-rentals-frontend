@@ -2,74 +2,79 @@
     <div class="row">
       <div class="col">
         <h1>Registration Page</h1>
+        <p>Thank you for booking a stay with us! We greatly appreciate it!</p>
+        <p>We just need a bit more infomation for our HOA to create a welcome packet for you. It should only take a couple of minutes, and should be painless. Once completed, you should be good to go.</p>
         <form [formGroup]="registrationForm" (ngSubmit)="register()">
-            <h2>Duration of Stay</h2>
-            <h3>
-                <label>From (Month/Day/Year):</label>
-                <input type="text" formControlName="durationDateFrom">
-            </h3>
-            <h3>
-                <label>To (Month/Day/Year):</label>
-                <input type="text" formControlName="durationDateTo">
-            </h3>
+            <mat-form-field appearance="outline">
+                <mat-label>Duration of Stay</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="durationDateFrom" placeholder="Check In Date">
+                  <input matEndDate formControlName="durationDateTo" placeholder="Check Out Date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
         
             <h2>Your Mailing Address</h2>
-            <h3>
-                <label>House Number & Street:</label>
-                <input type="text" formControlName="addressStreet">
-            </h3>
-            <h3>
-                <label>City:</label>
-                <input type="text" formControlName="addressCity">
-            </h3>
-            <h3>
-                <label>State:</label>
-                <input type="text" formControlName="addressState">
-            </h3>
-            <h3>
-                <label>Zipcode:</label>
-                <input type="text" formControlName="addressZipcode">
-            </h3>
+            <mat-form-field appearance="outline">
+                <mat-label>House Number & Street</mat-label>
+                <input matInput formControlName="addressStreet">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="addressCity">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <input matInput formControlName="addressState">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Zipcode</mat-label>
+                <input matInput formControlName="addressZipcode">
+            </mat-form-field>
         
             <h2>Your Phone Number</h2>
-            <h3>
-                <label>Primary Phone Number:</label>
-                <input type="text" formControlName="phoneNumber">
-            </h3>
-            <h3>
-                <label>Secondary Phone Number (optional):</label>
-                <input type="text" formControlName="phoneNumber2">
-            </h3>
+            <mat-form-field appearance="outline">
+                <mat-label>Primary Phone Number</mat-label>
+                <input matInput formControlName="phoneNumber">
+            </mat-form-field>
 
-            <h2>Vehicles</h2> <button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
-            <p>List all vehichle license plates staying at 153 Keats Lane for part or all of duration of the stay. If a rental car is being used, please indicate that.</p>
+            <mat-form-field appearance="outline">
+                <mat-label>Alternate Phone Number</mat-label>
+                <input matInput formControlName="phoneNumber2">
+            </mat-form-field>
+
+            <h2>Vehicles</h2>
+            <p>List all vehicle license plates staying at 153 Keats Lane for part or all of duration of the stay. If a rental car is being used, please indicate that.</p>
             
             <div *ngFor="let i of plateLoopNumbers">
                 <h3>Vehicle {{i + 1}}</h3>
-                <p>
-                    <label>Plate State:</label>
-                    <input type="text" formControlName="vehicle{{i + 1}}PlateState">
-                </p>
-        
-                <p>
-                    <label>Plate Number:</label>
-                    <input type="text" formControlName="vehicle{{i + 1}}PlateNumber">
-                </p>
-                
-                <p>
-                    <label>This car is a rental:</label>
-                    <input type="checkbox" formControlName="vehicle{{i + 1}}Rental" />
-                </p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Plate State</mat-label>
+                    <input matInput formControlName="vehicle{{i + 1}}PlateState">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Plate Number</mat-label>
+                    <input matInput formControlName="vehicle{{i + 1}}PlateNumber">
+                </mat-form-field>
+                <mat-checkbox formControlName="vehicle{{i + 1}}Rental">This is a rental car</mat-checkbox>
             </div>
 
+            <button mat-raised-button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
+
+            <hr/>
             <p>By typing your full legal name below, you agree to digitally sign the Towamensing Trails Property Owners Association Short Term Rental Registration Form.</p>
-            <p>
-                <label>Your Full Legal Name:</label>
-                <input type="text" formControlName="namePrinted">
-            </p>
+            <mat-form-field appearance="outline">
+                <mat-label>Your Full Legal Name</mat-label>
+                <input matInput formControlName="namePrinted">
+            </mat-form-field>
         
-      
-            <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+            <button mat-raised-button color="primary" id="submit" type="submit" [disabled]="!registrationForm.valid">Register</button>
         </form>
       </div>
     </div>

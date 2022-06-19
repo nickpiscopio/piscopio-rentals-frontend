@@ -3,15 +3,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RegistrationForm } from 'src/app/constants/registration-form.constant';
 import { Registration } from 'src/app/interfaces/registration.interface';
-import { RegistrationService } from 'src/app/services/registration.service';
+import { RegistrationService } from 'src/app/services/communication/registration/registration.service';
+import { DateService } from 'src/app/services/util/date/date.service';
 import { environment } from 'src/environments/environment';
 import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss'],
-  providers: [RegistrationService]
+  styleUrls: [ './registration.component.scss' ],
+  providers: [
+    DateService,
+    RegistrationService
+  ]
 })
 export class RegistrationComponent {
   private registration: Registration | undefined
@@ -23,6 +27,7 @@ export class RegistrationComponent {
 
   constructor(
     public dialog: MatDialog,
+    private dateService: DateService,
     private registrationService: RegistrationService
   ) { 
     this.setVehicleArray()
@@ -49,6 +54,8 @@ export class RegistrationComponent {
       return;
     }
 
+    console.log("registration: ", this.registration);
+
     this.registrationService.register(this.registration).subscribe({
       // Documentation: https://rxjs.dev/deprecations/subscribe-arguments
       next: v => {
@@ -65,8 +72,8 @@ export class RegistrationComponent {
 
   private getRegistrationFormGroup() {
     const formGroup: any = {}
-    formGroup[RegistrationForm.durationDateFrom] = new FormControl("", Validators.required);
-    formGroup[RegistrationForm.durationDateTo] = new FormControl("", Validators.required);
+    formGroup[RegistrationForm.durationDateFrom] = new FormControl<Date | null>(null, Validators.required);
+    formGroup[RegistrationForm.durationDateTo] = new FormControl<Date | null>(null, Validators.required);
     formGroup[RegistrationForm.namePrinted] = new FormControl("", Validators.required);
     formGroup[RegistrationForm.addressCity] = new FormControl("", Validators.required);
     formGroup[RegistrationForm.addressStreet] = new FormControl("", Validators.required);
@@ -103,8 +110,8 @@ export class RegistrationComponent {
 
   private augmentRegistration(): void {
     this.registration = {
-      durationDateFrom: this.registrationForm.controls[RegistrationForm.durationDateFrom].value,
-      durationDateTo: this.registrationForm.controls[RegistrationForm.durationDateTo].value,
+      durationDateFrom: this.dateService.formatDate(this.registrationForm.controls[RegistrationForm.durationDateFrom].value),
+      durationDateTo: this.dateService.formatDate(this.registrationForm.controls[RegistrationForm.durationDateTo].value),
       namePrinted: this.registrationForm.controls[RegistrationForm.namePrinted].value,
       addressCity: this.registrationForm.controls[RegistrationForm.addressCity].value,
       addressStreet: this.registrationForm.controls[RegistrationForm.addressStreet].value,
