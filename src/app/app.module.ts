@@ -10,18 +10,21 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './views/app.component';
 import { RegistrationComponent } from './views/registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GenericDialogComponent } from './views/dialogs/generic-dialog/generic-dialog.component';
+import { SuccessComponent } from './views/registration/success/success.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    GenericDialogComponent
+    GenericDialogComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { GenericDialogComponent } from './views/dialogs/generic-dialog/generic-d
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],

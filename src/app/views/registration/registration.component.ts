@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RegistrationForm } from 'src/app/constants/registration-form.constant';
 import { Registration } from 'src/app/interfaces/registration.interface';
@@ -7,6 +9,7 @@ import { RegistrationService } from 'src/app/services/communication/registration
 import { DateService } from 'src/app/services/util/date/date.service';
 import { environment } from 'src/environments/environment';
 import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -15,18 +18,23 @@ import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog
   providers: [
     DateService,
     RegistrationService
-  ]
+  ],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class RegistrationComponent {
   private registration: Registration | undefined
   private totalVehicles = 1
   private vehicleThreshold: number = 8
+  progressColor: ThemePalette = "primary";
+  progressMode: ProgressSpinnerMode = "indeterminate";
+  isLoading = false;
   plateLoopNumbers: number[] | undefined
 
   registrationForm = this.getRegistrationFormGroup();
 
   constructor(
     public dialog: MatDialog,
+    private route: Router,
     private dateService: DateService,
     private registrationService: RegistrationService
   ) { 
@@ -46,28 +54,54 @@ export class RegistrationComponent {
   }
 
   register(): void {
-    this.augmentRegistration()
+    console.log("registration: ", this.registration);
+    console.log("this.registrationForm.valid: ", this.registrationForm.valid);
 
-    if (this.registration == undefined || !this.registrationForm.valid) {
+    if (!this.registrationForm.valid) {
       this.openFormErrorDialog()
 
       return;
     }
 
-    console.log("registration: ", this.registration);
+    this.setLoading(true);
+
+    this.augmentRegistration()
+
+    if (this.registration == undefined) {
+      this.openFormErrorDialog()
+
+      this.setLoading(false);
+
+      return;
+    }
 
     this.registrationService.register(this.registration).subscribe({
       // Documentation: https://rxjs.dev/deprecations/subscribe-arguments
       next: v => {
-        this.openPositiveDialog();
+        this.openSuccessPage();
+
+        this.setLoading(false);
       },
       error: error => {
         this.openErrorDialog()
 
         console.error("Error submitting registration form: ", error);
-      },
-      complete: () => { }
+
+        this.setLoading(false)
+      }
     })
+  }
+
+  private setLoading(isLoading: boolean) {
+    this.isLoading = isLoading;
+
+    if (isLoading) {
+      this.registrationForm.disable();
+
+      return;
+    }
+
+    this.registrationForm.enable();
   }
 
   private getRegistrationFormGroup() {
@@ -151,11 +185,8 @@ export class RegistrationComponent {
     this.plateLoopNumbers = Array(this.totalVehicles).fill(0).map((x,i)=>i)
   }
 
-  private openPositiveDialog(): void {
-    this.openDialog(
-      'Success!',
-      `You are on your way! We'll let you know if you need to complete anything else. If you have any questions, please contact:\n\n${environment.propertyManager.name}\n${environment.propertyManager.phoneNumber}\n${environment.propertyManager.email}`,
-      );
+  private openSuccessPage(): void {
+    this.route.navigate(['/registration/success']);
   }
 
   private openVehicleLimitExceededDialog(): void {
