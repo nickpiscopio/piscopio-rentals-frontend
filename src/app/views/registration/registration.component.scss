@@ -29,6 +29,25 @@ hr {
     margin-bottom: 20px;
 }
 
+#wrapper-submit {
+    position: relative;
+    margin-bottom: 50px;
+    width: 80px;
+}
+
 #submit {
-    display: block;
+    width: 100%;
+}
+
+#submit, #progress {
+    position: absolute;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#progress {
+    left: 50%;
+    margin-left: -12.5px;
+    top: 5px;
 }

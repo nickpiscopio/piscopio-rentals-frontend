@@ -27,6 +27,7 @@ export class RegistrationComponent {
   private vehicleThreshold: number = 8
   progressColor: ThemePalette = "primary";
   progressMode: ProgressSpinnerMode = "indeterminate";
+  progressDiameter = 25
   isLoading = false;
   plateLoopNumbers: number[] | undefined
 

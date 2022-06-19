@@ -78,13 +78,17 @@
                 <input matInput formControlName="namePrinted">
             </mat-form-field>
         
-            <button mat-raised-button color="primary" id="submit" type="submit" [disabled]="!registrationForm.valid">Register</button>
+            <div id="wrapper-submit">
+                <button mat-raised-button color="primary" id="submit" type="submit" [disabled]="!registrationForm.valid">Register</button>
 
-            <mat-progress-spinner
-                *ngIf="isLoading"
-                [color]="progressColor"
-                [mode]="progressMode">
-            </mat-progress-spinner>
+                <mat-progress-spinner
+                    id="progress"
+                    *ngIf="isLoading"
+                    [color]="progressColor"
+                    [mode]="progressMode"
+                    [diameter]="progressDiameter">
+                </mat-progress-spinner>
+            </div>            
         </form>
       </div>
     </div>
