@@ -2,21 +2,12 @@
     <div class="row">
       <div class="col">
         <h1>Registration Page</h1>
-        <p>Thank you for booking a stay with us! We greatly appreciate it!</p>
+        <p>Thank you for booking with us! We greatly appreciate it!</p>
         <p>We just need a bit more infomation for our HOA to create a welcome packet for you. It should only take a couple of minutes, and should be painless. Once completed, you should be good to go.</p>
-        <form [formGroup]="registrationForm" (ngSubmit)="register()">
-            <mat-form-field appearance="outline">
-                <mat-label>Duration of Stay</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate formControlName="durationDateFrom" placeholder="Check In Date">
-                  <input matEndDate formControlName="durationDateTo" placeholder="Check Out Date">
-                </mat-date-range-input>
-                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </mat-form-field>
-        
-            <h2>Your Mailing Address</h2>
+        <form [formGroup]="registrationForm" (ngSubmit)="register()">      
+            <h2 id="title-info-about-you">Information About You</h2>
+
+            <h3>Your Mailing Address</h3>
             <mat-form-field appearance="outline">
                 <mat-label>House Number & Street</mat-label>
                 <input matInput formControlName="addressStreet">
@@ -37,7 +28,7 @@
                 <input matInput formControlName="addressZipcode">
             </mat-form-field>
         
-            <h2>Your Phone Number</h2>
+            <h3>Your Phone Number</h3>
             <mat-form-field appearance="outline">
                 <mat-label>Primary Phone Number</mat-label>
                 <input matInput formControlName="phoneNumber">
@@ -48,11 +39,24 @@
                 <input matInput formControlName="phoneNumber2">
             </mat-form-field>
 
-            <h2>Vehicles</h2>
-            <p>List all vehicle license plates staying at 153 Keats Lane for part or all of duration of the stay. If a rental car is being used, please indicate that.</p>
+            <h2>Information About Your Stay</h2>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Date Range of Stay</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="durationDateFrom" placeholder="Check In Date">
+                  <input matEndDate formControlName="durationDateTo" placeholder="Check Out Date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+
+            <h3 id="title-vehicles">Vehicles</h3>
+            <p id="description-vehicles">List all vehicle license plates staying at 153 Keats Lane for part or all of duration of the stay. If a rental car is being used, please indicate that.</p>
             
             <div *ngFor="let i of plateLoopNumbers">
-                <h3>Vehicle {{i + 1}}</h3>
+                <h4>Vehicle {{i + 1}}</h4>
                 <mat-form-field appearance="outline">
                     <mat-label>Plate State</mat-label>
                     <input matInput formControlName="vehicle{{i + 1}}PlateState">

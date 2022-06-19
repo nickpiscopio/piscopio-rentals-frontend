@@ -1,8 +1,32 @@
+h2 {
+    margin-top: 12px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+h3, h4 {
+    margin-bottom: 4px;
+}
+
 hr {
     display: block;
     margin: 28px 0 20px 0;
     border-top: 1px solid rgba(0, 0, 0, .12);
     width: 100%
+}
+
+#title-info-about-you {
+    margin-top: 26px;
+}
+
+#title-vehicles {
+    margin-top: 12px;
+}
+
+#description-vehicles {
+    margin-bottom: 20px;
 }
 
 #submit {
