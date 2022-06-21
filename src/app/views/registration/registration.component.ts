@@ -24,7 +24,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent {
   private registration: Registration | undefined
   private totalVehicles = 1
-  private vehicleThreshold: number = 8
+  private vehicleThreshold: number = 4
   progressColor: ThemePalette = "primary";
   progressMode: ProgressSpinnerMode = "indeterminate";
   progressDiameter = 25
