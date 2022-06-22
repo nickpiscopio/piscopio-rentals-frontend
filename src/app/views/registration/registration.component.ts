@@ -23,13 +23,16 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent {
   private registration: Registration | undefined
-  private totalVehicles = 1
+  private currentVehicleTotal = 1
   private vehicleThreshold: number = 4
+  plateLoopNumbers: number[] | undefined;
+
+  todaysDate = new Date();
+
   progressColor: ThemePalette = "primary";
   progressMode: ProgressSpinnerMode = "indeterminate";
-  progressDiameter = 25
+  progressDiameter = 25;
   isLoading = false;
-  plateLoopNumbers: number[] | undefined
 
   registrationForm = this.getRegistrationFormGroup();
 
@@ -43,8 +46,8 @@ export class RegistrationComponent {
   }
 
   addAnotherVehicle(): void {
-    if (this.totalVehicles < this.vehicleThreshold) {
-      this.totalVehicles++
+    if (this.currentVehicleTotal < this.vehicleThreshold) {
+      this.currentVehicleTotal++
 
       this.setVehicleArray()
 
@@ -55,9 +58,6 @@ export class RegistrationComponent {
   }
 
   register(): void {
-    console.log("registration: ", this.registration);
-    console.log("this.registrationForm.valid: ", this.registrationForm.valid);
-
     if (!this.registrationForm.valid) {
       this.openFormErrorDialog()
 
@@ -183,7 +183,7 @@ export class RegistrationComponent {
   }
 
   private setVehicleArray(): void {
-    this.plateLoopNumbers = Array(this.totalVehicles).fill(0).map((x,i)=>i)
+    this.plateLoopNumbers = Array(this.currentVehicleTotal).fill(0).map((x,i)=>i)
   }
 
   private openSuccessPage(): void {

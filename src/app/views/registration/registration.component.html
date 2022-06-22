@@ -41,15 +41,20 @@
 
             <h2>Information About Your Stay</h2>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" (click)="dateRangePicker.open()">
                 <mat-label>Date Range of Stay</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
+                <mat-date-range-input [rangePicker]="dateRangePicker" [min]="todaysDate">
                   <input matStartDate formControlName="durationDateFrom" placeholder="Check In Date">
                   <input matEndDate formControlName="durationDateTo" placeholder="Check Out Date">
                 </mat-date-range-input>
                 <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
+                <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #dateRangePicker>
+                    <mat-date-range-picker-actions>
+                        <button mat-button matDateRangePickerCancel>Cancel</button>
+                        <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+                    </mat-date-range-picker-actions>
+                </mat-date-range-picker>
               </mat-form-field>
 
             <h3 id="title-vehicles">Vehicles</h3>
