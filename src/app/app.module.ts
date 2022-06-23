@@ -13,18 +13,24 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './views/app.component';
-import { RegistrationComponent } from './views/registration/registration.component';
+import { AppComponent } from './components/views/app.component';
+import { RegistrationComponent } from './components/views/registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GenericDialogComponent } from './views/dialogs/generic-dialog/generic-dialog.component';
-import { SuccessComponent } from './views/registration/success/success.component';
+import { GenericDialogComponent } from './components/views/dialogs/generic-dialog/generic-dialog.component';
+import { SuccessComponent } from './components/views/registration/success/success.component';
+import { HomeComponent } from './components/views/home/home.component';
+import { HeaderComponent } from './components/fragments/header/header.component';
+import { FooterComponent } from './components/fragments/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     GenericDialogComponent,
-    SuccessComponent
+    SuccessComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
