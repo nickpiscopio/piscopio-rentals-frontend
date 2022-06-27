@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -21,6 +22,7 @@ import { SuccessComponent } from './components/views/registration/success/succes
 import { HomeComponent } from './components/views/home/home.component';
 import { HeaderComponent } from './components/fragments/header/header.component';
 import { FooterComponent } from './components/fragments/footer/footer.component';
+import { HeroComponent } from './components/fragments/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FooterComponent } from './components/fragments/footer/footer.component'
     SuccessComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HeroComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { FooterComponent } from './components/fragments/footer/footer.component'
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
