@@ -3,7 +3,7 @@ body {
 }
 
 #nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     z-index: 1;
@@ -18,6 +18,5 @@ body {
 }
 
 #content {
-    margin-top: 65px;
     padding: 16px 0;
 }
