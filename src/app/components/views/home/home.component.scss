@@ -1,6 +1,29 @@
+@import "src/styles/color.scss";
+@import "src/styles/margin.scss";
 @import "src/styles/typeface.scss";
 
+span {
+    font-weight: $font-bold;
+}
+
+#title-additional-details {
+    margin-bottom: $margin-small !important;
+    color: $color-accent;
+    font-weight: $font-bold;
+}
+
+#wrapper-book-now {
+    text-align: center;
+
+    p {
+        margin: $margin-medium 0;
+        color: $color-primary;
+        font-weight: $font-bold;
+    }
+}
+
 #wrapper-check-availability {
+    margin-top: $margin-medium;
     text-align: center;
 
     h2 {
