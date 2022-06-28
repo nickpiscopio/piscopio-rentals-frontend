@@ -1,3 +1,5 @@
+@import "src/styles/margin.scss";
+
 h1 {
     margin-bottom: 0 !important;
     font-size: 30px;
@@ -13,4 +15,19 @@ p {
 .col {
     height: 100%;
     vertical-align: middle;
+}
+
+#nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #FFFFFF;
+    padding: $margin-medium $margin-header-footer;
+    box-shadow: 0 1px 3px #888888
+}
+
+#nav h1 {
+    margin: 0;
+    text-align: center;
 }

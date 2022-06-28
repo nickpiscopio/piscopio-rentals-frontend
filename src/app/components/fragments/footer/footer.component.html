@@ -1,1 +1,22 @@
-<p>footer works!</p>
+<div id="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>153 Keats Lane Albrightsville, PA 18210</h1>
+            </div>
+            <div *ngIf="shouldShowBookingAndPropertyManagerInfo()" class="col">
+                <p class="title">Already Booked?</p>
+                <p class="description">Do you still need to fill out the HOA rental form?</p>
+                <a (click)="navigateToRentalForm()">HOA RENTAL FORM</a>
+            </div>
+            <div *ngIf="shouldShowBookingAndPropertyManagerInfo()" class="col-auto">
+                <p class="title">{{propertyManager}}—24/7 Contact</p>
+                <p class="description">{{propertyManagerPhoneNumber}}</p>
+                <p>{{propertyManagerEmail}}</p>
+            </div>
+            <div class="col-12">
+                <p id="copyright">© 2022 Keats Lane Rental. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>

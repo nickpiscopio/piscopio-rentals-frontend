@@ -1,0 +1,57 @@
+@import "src/styles/color.scss";
+@import "src/styles/margin.scss";
+@import "src/styles/typeface.scss";
+
+h1 {
+    margin-bottom: $margin-medium !important;
+    text-align: center;
+    text-transform: capitalize;
+    color: $color-white;
+    font-size: $font-size-header1;
+    font-weight: $font-bold;
+    line-height: $font-size-header1;
+}
+
+p {
+    margin-bottom: 0 !important;
+    color: $color-white;
+}
+
+a {
+    font-weight: $font-bold;
+    color: $color-white;
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.title {
+    margin-bottom: $margin-normal !important;
+    font-weight: $font-bold;
+}
+
+.description {
+    margin-bottom: 6px !important;
+}
+
+.container-fluid {
+    padding-top: $margin-large;
+    padding-bottom: $margin-large;
+}
+
+#wrapper {
+    padding: 0 $margin-header-footer;
+    background-color: $color-accent;
+    color: $color-white;
+}
+
+#copyright {
+    margin: $margin-medium 0 0 0!important;
+    text-align: center;
+    font-size: $font-size-extra-small;
+    font-weight: $font-normal;
+    color: $color-white;
+}

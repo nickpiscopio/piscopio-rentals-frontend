@@ -10,6 +10,7 @@ import { GenericDialogComponent } from "../dialogs/generic-dialog/generic-dialog
 import { Router } from "@angular/router";
 import { LoadingService } from "src/app/services/loading.service";
 import { HeaderService } from "src/app/services/header.service";
+import { FooterService } from "src/app/services/footer.service";
 
 @Component({
   selector: "app-registration",
@@ -37,6 +38,7 @@ export class RegistrationComponent implements OnInit {
     private dateService: DateService,
     private registrationService: RegistrationService,
     private headerService: HeaderService,
+    private footerService: FooterService,
     private loadingService: LoadingService
   ) {
     this.setVehicleArray()
@@ -44,6 +46,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.headerService.setShowBookNow(false);
+    this.footerService.setShowBookingAndPropertyManagerInfo(false);
   }
 
   addAnotherVehicle(): void {
