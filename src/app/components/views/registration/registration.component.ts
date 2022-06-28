@@ -1,7 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RegistrationForm } from 'src/app/constants/registration-form.constant';
 import { Registration } from 'src/app/interfaces/registration.interface';
@@ -10,6 +8,7 @@ import { DateService } from 'src/app/services/util/date/date.service';
 import { environment } from 'src/environments/environment';
 import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
 import { Router } from '@angular/router';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-registration',
@@ -29,18 +28,14 @@ export class RegistrationComponent {
 
   todaysDate = new Date();
 
-  progressColor: ThemePalette = "primary";
-  progressMode: ProgressSpinnerMode = "indeterminate";
-  progressDiameter = 25;
-  isLoading = false;
-
   registrationForm = this.getRegistrationFormGroup();
 
   constructor(
     public dialog: MatDialog,
     private route: Router,
     private dateService: DateService,
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    private loadingService: LoadingService
   ) { 
     this.setVehicleArray()
   }
@@ -94,9 +89,9 @@ export class RegistrationComponent {
   }
 
   private setLoading(isLoading: boolean) {
-    this.isLoading = isLoading;
+    this.loadingService.setLoading(isLoading);
 
-    if (isLoading) {
+    if (this.loadingService.isLoading()) {
       this.registrationForm.disable();
 
       return;

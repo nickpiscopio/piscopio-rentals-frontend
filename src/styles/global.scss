@@ -1,22 +1,33 @@
+@import "margin.scss";
+
 h1 {
-    margin-bottom: 50px !important;
+    margin-bottom: $margin-large !important;
     text-transform: uppercase;
     color: #071805;
 }
 
 h2 {
-    margin-top: 50px !important;
+    margin-top: $margin-large !important;
     color: #14A1B2;
 }
 
 h3 {
-    margin-top: 25px !important;
-    margin-bottom: 12px !important;
+    margin-top: $margin-medium !important;
+    margin-bottom: $margin-normal !important;
     color: #071805;
 }
 
+h4 {
+    margin-top: $margin-medium !important;
+    margin-bottom: $margin-normal !important;
+}
+
+hr {
+    color: #4A4F52;
+}
+
 p {
-    margin-bottom: 25px !important;
+    margin-bottom: $margin-medium !important;
     color: #071805;
 }
 

@@ -1,55 +1,67 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <mat-card>
-                <h1>Registration Page</h1>
-                <p>Thank you for booking with us! We greatly appreciate it!</p>
-                <p>We just need a bit more infomation for our HOA to create a welcome packet for you. It should only
-                    take a couple of minutes, and should be painless. Once completed, you should be good to go.</p>
-                <form [formGroup]="registrationForm" (ngSubmit)="register()">
-                    <h2 id="title-info-about-you">Information About You</h2>
+<div class="container-sm-fluid container-lg">
+    <mat-card>
+        <h1>Registration Page</h1>
+        <p>Thank you for booking with us! We greatly appreciate it!</p>
+        <p>We just need a bit more infomation for our HOA to create a welcome packet for you. It should only
+            take a couple of minutes, and should be painless. Once completed, you should be good to go.</p>
+        <form [formGroup]="registrationForm" (ngSubmit)="register()">
+            <div class="row">
+                <h2>Information About You</h2>
 
-                    <h3>Your Mailing Address</h3>
+                <h3>Your Mailing Address</h3>
+                <div class="col">
                     <mat-form-field appearance="outline">
                         <mat-label>House Number & Street</mat-label>
                         <input matInput formControlName="addressStreet">
                     </mat-form-field>
+                </div>
 
+                <div class="col-sm-auto col-md-3">
                     <mat-form-field appearance="outline">
                         <mat-label>City</mat-label>
                         <input matInput formControlName="addressCity">
                     </mat-form-field>
+                </div>
 
+                <div class="col-sm-auto col-md-1">
                     <mat-form-field appearance="outline">
                         <mat-label>State</mat-label>
                         <input matInput formControlName="addressState">
                     </mat-form-field>
+                </div>
 
+                <div class="col-sm-auto col-md-2">
                     <mat-form-field appearance="outline">
                         <mat-label>Zipcode</mat-label>
                         <input matInput formControlName="addressZipcode">
                     </mat-form-field>
+                </div>
 
-                    <h3>Your Phone Number</h3>
+                <h3>Your Phone Number</h3>
+                <div class="col-sm-auto col-md-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Primary Phone Number</mat-label>
                         <input matInput formControlName="phoneNumber">
                     </mat-form-field>
+                </div>
 
+                <div class="col-sm-auto col-md-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Alternate Phone Number</mat-label>
                         <input matInput formControlName="phoneNumber2">
                     </mat-form-field>
+                </div>
 
-                    <h2>Information About Your Stay</h2>
+                <h2>Information About Your Stay</h2>
 
+                <div class="col-sm-auto col-md-4">
                     <mat-form-field appearance="outline" (click)="dateRangePicker.open()">
                         <mat-label>Date Range of Stay</mat-label>
                         <mat-date-range-input [rangePicker]="dateRangePicker" [min]="todaysDate">
                             <input matStartDate formControlName="durationDateFrom" placeholder="Check In Date">
                             <input matEndDate formControlName="durationDateTo" placeholder="Check Out Date">
                         </mat-date-range-input>
-                        <mat-datepicker-toggle matSuffix [for]="dateRangePicker"></mat-datepicker-toggle>
+                        <mat-datepicker-toggle matPrefix [for]="dateRangePicker"></mat-datepicker-toggle>
                         <mat-date-range-picker #dateRangePicker>
                             <mat-date-range-picker-actions>
                                 <button mat-button matDateRangePickerCancel>Cancel</button>
@@ -57,45 +69,50 @@
                             </mat-date-range-picker-actions>
                         </mat-date-range-picker>
                     </mat-form-field>
+                </div>
 
-                    <h3 id="title-vehicles">Vehicles</h3>
-                    <p id="description-vehicles">List all vehicle license plates staying at 153 Keats Lane for part or
-                        all of duration of the stay. If a rental car is being used, please indicate that.</p>
+                <h3>Vehicles</h3>
+                <p id="description-vehicles">List all vehicle license plates staying at 153 Keats Lane for part or
+                    all of duration of the stay. If a rental car is being used, please indicate that.</p>
 
-                    <div *ngFor="let i of plateLoopNumbers">
-                        <h4>Vehicle {{i + 1}}</h4>
+                <div class="row" *ngFor="let i of plateLoopNumbers">
+                    <h4>Vehicle {{i + 1}}</h4>
+                    <div class="col-sm-auto col-md-3">
                         <mat-form-field appearance="outline">
                             <mat-label>Plate State</mat-label>
                             <input matInput formControlName="vehicle{{i + 1}}PlateState">
                         </mat-form-field>
+                    </div>
 
+                    <div class="col-sm-auto col-md-3">
                         <mat-form-field appearance="outline">
                             <mat-label>Plate Number</mat-label>
                             <input matInput formControlName="vehicle{{i + 1}}PlateNumber">
                         </mat-form-field>
-                        <mat-checkbox formControlName="vehicle{{i + 1}}Rental">This is a rental car</mat-checkbox>
                     </div>
 
-                    <button mat-raised-button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
+                    <div class="col-sm-auto col-md-3">
+                        <mat-checkbox class="mt-md-3 mt-sm-0" formControlName="vehicle{{i + 1}}Rental">This is a rental car</mat-checkbox>
+                    </div>
+                </div>
 
-                    <hr />
-                    <p>By typing your full legal name below, you agree to digitally sign the Towamensing Trails Property
-                        Owners Association Short Term Rental Registration Form.</p>
+                <button mat-button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
+
+                <hr />
+                <p>By typing your full legal name below, you agree to digitally sign the Towamensing Trails Property
+                    Owners Association Short Term Rental Registration Form.</p>
+                <div class="col-sm-auto col-md-5">
                     <mat-form-field appearance="outline">
                         <mat-label>Your Full Legal Name</mat-label>
                         <input matInput formControlName="namePrinted">
                     </mat-form-field>
+                </div>
 
-                    <div id="wrapper-submit">
-                        <button mat-raised-button color="primary" id="submit" type="submit"
-                            [disabled]="!registrationForm.valid">Register</button>
-
-                        <mat-progress-spinner id="progress" *ngIf="isLoading" [color]="progressColor"
-                            [mode]="progressMode" [diameter]="progressDiameter">
-                        </mat-progress-spinner>
-                    </div>
-                </form>
-            </mat-card>
-        </div>
-    </div>
+                <div>
+                    <button mat-raised-button color="primary" id="submit" type="submit"
+                    [disabled]="!registrationForm.valid">Submit</button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
 </div>

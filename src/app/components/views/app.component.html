@@ -5,3 +5,10 @@
 <div id="content">
   <router-outlet></router-outlet>
 </div>
+
+<div id="wrapper-loading" *ngIf="isLoading()">
+  <div id="loading">
+    <mat-progress-spinner id="progress" [mode]="progressMode" [diameter]="progressDiameter"></mat-progress-spinner>
+    <p>Loading...</p>
+  </div>
+</div>

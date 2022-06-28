@@ -23,6 +23,7 @@ import { HomeComponent } from './components/views/home/home.component';
 import { HeaderComponent } from './components/fragments/header/header.component';
 import { FooterComponent } from './components/fragments/footer/footer.component';
 import { HeroComponent } from './components/fragments/hero/hero.component';
+import { LoadingService } from './services/loading.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,10 @@ import { HeroComponent } from './components/fragments/hero/hero.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [ DatePipe ],
+  providers: [
+    DatePipe,
+    LoadingService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,15 +1,3 @@
-h2 {
-    margin-top: 12px;
-}
-
-h3 {
-    font-weight: bold;
-}
-
-h3, h4 {
-    margin-bottom: 4px;
-}
-
 hr {
     display: block;
     margin: 28px 0 20px 0;
@@ -17,16 +5,8 @@ hr {
     width: 100%
 }
 
-#title-info-about-you {
-    margin-top: 26px;
-}
-
-#title-vehicles {
-    margin-top: 12px;
-}
-
 #description-vehicles {
-    margin-bottom: 20px;
+    margin-bottom: 0 !important;
 }
 
 #wrapper-submit {
@@ -35,19 +15,19 @@ hr {
     width: 80px;
 }
 
-#submit {
-    width: 100%;
-}
+// #submit {
+//     width: 100%;
+// }
 
-#submit, #progress {
-    position: absolute;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-}
+// #submit, #progress {
+//     position: absolute;
+//     display: flex; 
+//     justify-content: center; 
+//     align-items: center;
+// }
 
-#progress {
-    left: 50%;
-    margin-left: -12.5px;
-    top: 5px;
-}
+// #progress {
+//     left: 50%;
+//     margin-left: -12.5px;
+//     top: 5px;
+// }

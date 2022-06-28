@@ -1,3 +1,5 @@
+@import "src/styles/margin.scss";
+
 body {
     height: auto
 }
@@ -18,6 +20,39 @@ body {
 }
 
 #content {
-    padding: 16px 0;
+    margin: 50px 0;
     background-color: #F6FBFB;
+}
+
+#wrapper-loading {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+#loading {
+    width: 100px;
+    height: 100px;
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+}
+
+#loading p {
+    margin-top: $margin-normal;
+    color: #fff;
+}
+
+#progress {
+    margin: 0 auto;
 }

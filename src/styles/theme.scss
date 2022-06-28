@@ -21,12 +21,12 @@ $fontConfig: (
   headline: mat-typography-level(18px, 18px, 700, 'Montserrat', 1px),
   title: mat-typography-level(18px, 22px, 700, 'Montserrat', .5px),
   subheading-2: mat-typography-level(16px, 22px, 700, 'Montserrat', .5px),
-  subheading-1: mat-typography-level(15px, 24px, 500, 'Montserrat', 0.0067em),
+  subheading-1: mat-typography-level(16px, 22px, 500, 'Montserrat', .5px),
   body-2: mat-typography-level(14px, 24px, 500, 'Montserrat', 0.0179em),
   body-1: mat-typography-level(16px, 22px, 500, 'Montserrat', .5px),
   button: mat-typography-level(18px, 18px, 500, 'Montserrat', 0.0694em),
   caption: mat-typography-level(12px, 20px, 400, 'Montserrat', 0.0333em),
-  input: mat-typography-level(inherit, 1.125, 400, 'Montserrat', 1.5px)
+  input: mat-typography-level(14px, 1.125, 500, 'Montserrat', .5px)
 );
 
 // Foreground Elements
