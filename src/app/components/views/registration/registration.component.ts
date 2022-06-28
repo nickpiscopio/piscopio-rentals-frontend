@@ -1,26 +1,27 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { RegistrationForm } from 'src/app/constants/registration-form.constant';
-import { Registration } from 'src/app/interfaces/registration.interface';
-import { RegistrationService } from 'src/app/services/communication/registration/registration.service';
-import { DateService } from 'src/app/services/util/date/date.service';
-import { environment } from 'src/environments/environment';
-import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
-import { Router } from '@angular/router';
-import { LoadingService } from 'src/app/services/loading.service';
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { RegistrationForm } from "src/app/constants/registration-form.constant";
+import { Registration } from "src/app/interfaces/registration.interface";
+import { RegistrationService } from "src/app/services/communication/registration/registration.service";
+import { DateService } from "src/app/services/util/date.service";
+import { environment } from "src/environments/environment";
+import { GenericDialogComponent } from "../dialogs/generic-dialog/generic-dialog.component";
+import { Router } from "@angular/router";
+import { LoadingService } from "src/app/services/loading.service";
+import { HeaderService } from "src/app/services/header.service";
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: [ './registration.component.scss' ],
+  selector: "app-registration",
+  templateUrl: "./registration.component.html",
+  styleUrls: ["./registration.component.scss"],
   providers: [
     DateService,
     RegistrationService
   ],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
   private registration: Registration | undefined
   private currentVehicleTotal = 1
   private vehicleThreshold: number = 4
@@ -35,9 +36,14 @@ export class RegistrationComponent {
     private route: Router,
     private dateService: DateService,
     private registrationService: RegistrationService,
+    private headerService: HeaderService,
     private loadingService: LoadingService
-  ) { 
+  ) {
     this.setVehicleArray()
+  }
+
+  ngOnInit(): void {
+    this.headerService.setShowBookNow(false);
   }
 
   addAnotherVehicle(): void {
@@ -154,7 +160,7 @@ export class RegistrationComponent {
       vehicle2PlateState: this.registrationForm.controls[RegistrationForm.vehicle2PlateState].value,
       vehicle2PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle2PlateNumber, RegistrationForm.vehicle2Rental),
       vehicle3PlateState: this.registrationForm.controls[RegistrationForm.vehicle3PlateState].value,
-      vehicle3PlateNumber:this.getVehiclePlateNumber(RegistrationForm.vehicle3PlateNumber, RegistrationForm.vehicle3Rental),
+      vehicle3PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle3PlateNumber, RegistrationForm.vehicle3Rental),
       vehicle4PlateState: this.registrationForm.controls[RegistrationForm.vehicle4PlateState].value,
       vehicle4PlateNumber: this.getVehiclePlateNumber(RegistrationForm.vehicle4PlateNumber, RegistrationForm.vehicle4Rental),
       vehicle5PlateState: this.registrationForm.controls[RegistrationForm.vehicle5PlateState].value,
@@ -178,46 +184,45 @@ export class RegistrationComponent {
   }
 
   private setVehicleArray(): void {
-    this.plateLoopNumbers = Array(this.currentVehicleTotal).fill(0).map((x,i)=>i)
+    this.plateLoopNumbers = Array(this.currentVehicleTotal).fill(0).map((x, i) => i)
   }
 
   private openSuccessPage(): void {
-    this.route.navigate(['/registration/success']);
+    this.route.navigate(["/registration/success"]);
   }
 
   private openVehicleLimitExceededDialog(): void {
     this.openDialog(
-      'Vehicle Limit Met',
-      `You cannot have more than ${this.vehicleThreshold} vehicles at the property.`,
-      );
+      "Vehicle Limit Met",
+      `The property can only park ${this.vehicleThreshold} total vehicles.`,
+    );
   }
 
   private openFormErrorDialog(): void {
     this.openDialog(
-      'Invalid Form Submission',
-      'Please fill out the required forms before continuing.',
-      );
+      "Invalid Form Submission",
+      "Please fill out the required forms before continuing.",
+    );
   }
 
   private openErrorDialog(): void {
     this.openDialog(
-      'An Error Occurred',
+      "An Error Occurred",
       `There was an error when submitting the registration form. Please try again later or contact:\n\n${environment.propertyManager.name}\n${environment.propertyManager.phoneNumber}\n${environment.propertyManager.email}`,
-      );
+    );
   }
 
-  private openDialog(title: string, content: string, positiveButton?:string, negativeButton?: string): void {
+  private openDialog(title: string, content: string, positiveButton?: string, negativeButton?: string): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-        title: title,
-        content: content,
-        positiveButton: positiveButton,
-        negativeButton: negativeButton
+      title: title,
+      content: content,
+      positiveButton: positiveButton,
+      negativeButton: negativeButton
     };
 
     this.dialog.open(GenericDialogComponent, dialogConfig);
   }
 }
-

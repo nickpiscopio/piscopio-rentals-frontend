@@ -7,10 +7,10 @@
             <div class="col-sm-12 order-sm-first col-md-auto mb-4 mb-md-0">
                 <p class="bold">{{propertyManager}}—24/7 Contact</p>
                 <p>{{propertyManagerPhoneNumber}}</p>
-                <p>{{propertyManagerEmail}}</p>
+                <p class="mb-0">{{propertyManagerEmail}}</p>
             </div>
             <div class="col-sm-12 order-sm-last col-md-auto align-self-center">
-                <button mat-raised-button color="primary" type="button" (click)="bookNow()">Book Now</button>
+                <button *ngIf="shouldShowBookNowButton()" mat-raised-button color="primary" type="button" (click)="bookNow()">Book Now</button>
             </div>
         </div>
     </div>

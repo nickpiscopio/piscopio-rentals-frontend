@@ -7,7 +7,6 @@ h1 {
 }
 
 h2 {
-    margin-top: $margin-large !important;
     color: #14A1B2;
 }
 
@@ -33,4 +32,8 @@ p {
 
 .bold {
     font-weight: 500;
+}
+
+.mt-large {
+    margin-top: 50px !important;
 }

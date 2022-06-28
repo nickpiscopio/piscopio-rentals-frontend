@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -23,6 +24,7 @@ import { HomeComponent } from './components/views/home/home.component';
 import { HeaderComponent } from './components/fragments/header/header.component';
 import { FooterComponent } from './components/fragments/footer/footer.component';
 import { HeroComponent } from './components/fragments/hero/hero.component';
+import { HeaderService } from './services/header.service';
 import { LoadingService } from './services/loading.service';
 
 @NgModule({
@@ -48,6 +50,7 @@ import { LoadingService } from './services/loading.service';
     MatNativeDateModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
     AppRoutingModule,
@@ -55,6 +58,7 @@ import { LoadingService } from './services/loading.service';
   ],
   providers: [
     DatePipe,
+    HeaderService,
     LoadingService
   ],
   bootstrap: [ AppComponent ]

@@ -6,7 +6,7 @@
             take a couple of minutes, and should be painless. Once completed, you should be good to go.</p>
         <form [formGroup]="registrationForm" (ngSubmit)="register()">
             <div class="row">
-                <h2>Information About You</h2>
+                <h2 class="mt-large">Information About You</h2>
 
                 <h3>Your Mailing Address</h3>
                 <div class="col">
@@ -52,16 +52,18 @@
                     </mat-form-field>
                 </div>
 
-                <h2>Information About Your Stay</h2>
+                <h2 class="mt-large">Information About Your Stay</h2>
+                <h3>Date Range of Stay</h3>
 
                 <div class="col-sm-auto col-md-4">
                     <mat-form-field appearance="outline" (click)="dateRangePicker.open()">
-                        <mat-label>Date Range of Stay</mat-label>
                         <mat-date-range-input [rangePicker]="dateRangePicker" [min]="todaysDate">
-                            <input matStartDate formControlName="durationDateFrom" placeholder="Check In Date">
-                            <input matEndDate formControlName="durationDateTo" placeholder="Check Out Date">
+                            <input matStartDate formControlName="durationDateFrom" placeholder="Check In">
+                            <input matEndDate formControlName="durationDateTo" placeholder="Check Out">
                         </mat-date-range-input>
-                        <mat-datepicker-toggle matPrefix [for]="dateRangePicker"></mat-datepicker-toggle>
+                        <mat-datepicker-toggle matPrefix [for]="dateRangePicker">
+                            <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+                        </mat-datepicker-toggle>
                         <mat-date-range-picker #dateRangePicker>
                             <mat-date-range-picker-actions>
                                 <button mat-button matDateRangePickerCancel>Cancel</button>
@@ -96,7 +98,7 @@
                     </div>
                 </div>
 
-                <button mat-button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
+                <button class="mt-large" mat-stroked-button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
 
                 <hr />
                 <p>By typing your full legal name below, you agree to digitally sign the Towamensing Trails Property
@@ -108,7 +110,7 @@
                     </mat-form-field>
                 </div>
 
-                <div>
+                <div class="mt-large">
                     <button mat-raised-button color="primary" id="submit" type="submit"
                     [disabled]="!registrationForm.valid">Submit</button>
                 </div>

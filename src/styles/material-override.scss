@@ -1,15 +1,24 @@
+@import "margin.scss";
+
 .mat-button,
 .mat-raised-button, 
 .mat-flat-button, 
 .mat-icon-button, 
-.mat-stroked-button { 
-  border-radius: 25px !important; 
+.mat-stroked-button {
+  border-radius: 50px !important;
 }
 
 .mat-button,
-.mat-raised-button {
-  margin-top: 50px !important;
+.mat-raised-button,
+.mat-stroked-button {
   width: auto !important;
+  padding: $margin-normal 36px !important;
+  line-height: 20px !important;
+}
+
+.mat-stroked-button {
+  border: 2px solid #12575F !important;
+  color: #12575F;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-wrapper {
@@ -20,13 +29,22 @@
   padding-bottom: 0 !important;
 }
 
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-type-mat-date-range-input .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0 0 1em 0 !important;
+}
+
+.mat-date-range-input {
+  margin-bottom: 3px !important;
+  margin-left: 2px !important;
+}
+
 .mat-card {
   border-radius: 8px !important;
   padding: 50px !important;
-}
-
-.mat-form-field {
-  width: 100%;
 }
 
 .mat-progress-spinner circle, .mat-spinner circle {

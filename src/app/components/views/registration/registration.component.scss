@@ -1,6 +1,8 @@
+@import "src/styles/margin.scss";
+
 hr {
     display: block;
-    margin: 28px 0 20px 0;
+    margin: $margin-extra-large 0 $margin-large 0;
     border-top: 1px solid rgba(0, 0, 0, .12);
     width: 100%
 }
@@ -14,20 +16,3 @@ hr {
     margin-bottom: 50px;
     width: 80px;
 }
-
-// #submit {
-//     width: 100%;
-// }
-
-// #submit, #progress {
-//     position: absolute;
-//     display: flex; 
-//     justify-content: center; 
-//     align-items: center;
-// }
-
-// #progress {
-//     left: 50%;
-//     margin-left: -12.5px;
-//     top: 5px;
-// }
