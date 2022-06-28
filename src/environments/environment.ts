@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   domain: "http://127.0.0.1:3000",
   bookNow: "https://evolve.com/vacation-rentals/469273",
+  vehicleThreshold: 4,
   propertyManager: {
     name: "Dottie Grefe",
     phoneNumber: "(484) 661-7106",

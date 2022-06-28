@@ -1,1 +1,26 @@
-<p>home works!</p>
+<div class="container-sm-fluid container-lg">
+    <mat-card>
+        <h1>WELCOME TO 153 KEATS LANE!</h1>
+        <p>Your next Pocono Mountains retreat awaits at this 3-bedroom, 2-bath Albrightsville vacation rental! This A-frame escape features a cozy living area with a Smart TV, a fully equipped kitchen, and a spacious deck to relax on following your fun-packed days. Explore nearby state parks with your furry friend or visit local attractions like the Old Jail Museum. Traveling with kids? Make a splash at the Great Wolf Lodge Water Park! No matter what season, this cabin offers year-round fun for everyone.</p>
+        <p class="bold">Additional Details</p>
+        <ul>
+            <li>Full Address: 153 Keats Lane Albrightsville, PA 18210</li>
+            <li>Bedroom 1: Queen Bed | Bedroom 2: Queen Bed | Bedroom 3: 2 Twin Bunk Beds | Loft: Sleeper Sofa</li>
+            <li>No smoking</li>
+            <li>Pet friendly with a $50 fee (+ fees & taxes)</li>
+            <li>No events, parties, or large gatherings</li>
+            <li>Must be at least 25 years old to book</li>
+            <li>Additional fees and taxes may apply</li>
+            <li>Photo ID may be required upon check-in</li>
+            <li>Parking: Driveway ({{getVehicleThreshold()}} vehicles)</li>
+            <li><span class="bold">NOTE:</span> This property requires stairs to access and while there are 2 bedrooms and 1 full bathroom located on the 1st floor, the remaining bedroom, full bathroom, and sleeper sofa are located on the 2nd floor and require additional stairs to access</li>
+            <li><span class="bold">NOTE:</span> The fireplace is not available for guest use</li>
+        </ul>
+    </mat-card>
+    <div id="wrapper-check-availability">
+        <h2>Need a vacation? Book today!</h2>
+        <div class="mt-large">
+            <button mat-raised-button color="primary" (click)="bookNow()">Check Availability</button>
+        </div>
+    </div>
+</div>

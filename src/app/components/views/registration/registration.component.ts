@@ -25,7 +25,7 @@ import { FooterService } from "src/app/services/footer.service";
 export class RegistrationComponent implements OnInit {
   private registration: Registration | undefined
   private currentVehicleTotal = 1
-  private vehicleThreshold: number = 4
+  private vehicleThreshold: number = environment.vehicleThreshold
   plateLoopNumbers: number[] | undefined;
 
   todaysDate = new Date();

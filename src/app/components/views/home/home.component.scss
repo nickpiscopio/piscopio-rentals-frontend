@@ -1,0 +1,11 @@
+@import "src/styles/typeface.scss";
+
+#wrapper-check-availability {
+    text-align: center;
+
+    h2 {
+        font-size: $font-size-header1;
+        line-height: $font-height-header1;
+        font-weight: $font-semi-bold;
+    }
+}
