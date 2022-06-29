@@ -1,19 +1,21 @@
+@import "color.scss";
 @import "spacing.scss";
+@import "typeface.scss";
 
 h1 {
     margin-bottom: $margin-large  !important;
     text-transform: uppercase;
-    color: #071805;
+    color: $color-text;
 }
 
 h2 {
-    color: #14A1B2;
+    color: $color-accent;
 }
 
 h3 {
     margin-top: $margin-medium  !important;
     margin-bottom: $margin-normal  !important;
-    color: #071805;
+    color: $color-text;
 }
 
 h4 {
@@ -22,12 +24,12 @@ h4 {
 }
 
 hr {
-    color: #4A4F52;
+    color: $color-hr;
 }
 
 p {
     margin-bottom: $margin-medium  !important;
-    color: #071805;
+    color: $color-text;
 }
 
 a:hover {
@@ -36,9 +38,13 @@ a:hover {
 }
 
 .bold {
-    font-weight: 500 !important;
+    font-weight: $font-bold !important;
 }
 
 .mt-large {
-    margin-top: 50px !important;
+    margin-top: $margin-large !important;
+}
+
+.mb-large {
+    margin-bottom: $margin-large !important;
 }
