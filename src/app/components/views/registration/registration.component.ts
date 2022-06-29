@@ -9,7 +9,7 @@ import { environment } from "src/environments/environment";
 import { GenericDialogComponent } from "../dialogs/generic-dialog/generic-dialog.component";
 import { Router } from "@angular/router";
 import { LoadingService } from "src/app/services/loading.service";
-import { HeaderService } from "src/app/services/header.service";
+import { HeaderService, HeaderState } from "src/app/services/header.service";
 import { FooterService } from "src/app/services/footer.service";
 
 @Component({
@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.headerService.setShowBookNow(false);
+    this.headerService.setState(HeaderState.REGISTRATION);
     this.footerService.setShowBookingAndPropertyManagerInfo(false);
   }
 

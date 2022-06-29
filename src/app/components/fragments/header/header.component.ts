@@ -18,7 +18,11 @@ export class HeaderComponent {
     window.open(environment.bookNow)
   }
 
+  shouldShowContact(): boolean {
+    return this.headerService.shouldShowContact();
+  }
+
   shouldShowBookNowButton(): boolean {
-    return this.headerService.shouldShowBookNowButton()
+    return this.headerService.shouldShowBookNowButton();
   }
 }

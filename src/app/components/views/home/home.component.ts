@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FooterService } from "src/app/services/footer.service";
-import { HeaderService } from "src/app/services/header.service";
+import { HeaderService, HeaderState } from "src/app/services/header.service";
 import { environment } from "src/environments/environment";
 
 @Component({
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private headerService: HeaderService, private footerService: FooterService) { }
 
   ngOnInit(): void {
-    this.headerService.setShowBookNow(true);
+    this.headerService.setState(HeaderState.HOME);
     this.footerService.setShowBookingAndPropertyManagerInfo(true);
   }
 

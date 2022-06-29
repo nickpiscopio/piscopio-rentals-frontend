@@ -4,12 +4,14 @@
             <div class="col-sm-12 col-md align-self-center mb-4 mb-md-0">
                 <h1>Keats Lane Rentals</h1>
             </div>
-            <div class="col-sm-12 order-sm-first col-md-auto mb-4 mb-md-0">
-                <p class="bold">{{propertyManager}}—24/7 Contact</p>
-                <p>{{propertyManagerPhoneNumber}}</p>
-                <p class="mb-0">{{propertyManagerEmail}}</p>
+            <div class="col-sm-12 order-sm-first col-md mb-4 mb-md-0">
+                <div *ngIf="shouldShowContact()">
+                    <p class="bold">{{propertyManager}}—24/7 Contact</p>
+                    <p>{{propertyManagerPhoneNumber}}</p>
+                    <p class="mb-0">{{propertyManagerEmail}}</p>
+                </div>
             </div>
-            <div class="col-sm-12 order-sm-last col-md-auto align-self-center">
+            <div id="wrapper-book-now" class="col-sm-12 order-sm-last col-md align-self-center">
                 <button *ngIf="shouldShowBookNowButton()" mat-raised-button color="primary" type="button" (click)="bookNow()">Book Now</button>
             </div>
         </div>

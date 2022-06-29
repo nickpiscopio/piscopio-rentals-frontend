@@ -1,14 +1,16 @@
-@import "src/styles/margin.scss";
+@import "src/styles/spacing.scss";
+@import "src/styles/typeface.scss";
 
 h1 {
     margin-bottom: 0 !important;
-    font-size: 30px;
+    font-size: $font-height-header1;
+    line-height: $font-height-header1;
     text-transform: none;
 }
 
 p {
     margin-bottom: 2px !important;
-    font-size: 12px;
+    font-size: $font-size-extra-small;
     line-height: 16px;
 }
 
@@ -24,9 +26,13 @@ p {
     z-index: 2;
     background-color: #FFFFFF;
     padding: $margin-medium $margin-header-footer;
+
+    h1 {
+        margin: 0;
+        text-align: center;
+    }
 }
 
-#nav h1 {
-    margin: 0;
-    text-align: center;
+#wrapper-book-now {
+    text-align: end;
 }
