@@ -8,7 +8,7 @@
             <div class="row">
                 <h2 class="mt-large">Information About You</h2>
 
-                <h3>Your Mailing Address</h3>
+                <h3 id="title-address">Your Mailing Address</h3>
                 <div class="col">
                     <mat-form-field appearance="outline">
                         <mat-label>House Number & Street</mat-label>
@@ -37,7 +37,7 @@
                     </mat-form-field>
                 </div>
 
-                <h3>Your Phone Number</h3>
+                <h3 id="title-phone-number">Your Phone Number</h3>
                 <div class="col-sm-auto col-md-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Primary Phone Number</mat-label>
@@ -73,7 +73,7 @@
                     </mat-form-field>
                 </div>
 
-                <h3>Vehicles</h3>
+                <h3 id="title-vehicles">Vehicles</h3>
                 <p id="description-vehicles">List all vehicle license plates staying at 153 Keats Lane for part or
                     all of duration of the stay. If a rental car is being used, please indicate that.</p>
 
@@ -98,7 +98,9 @@
                     </div>
                 </div>
 
-                <button class="mt-large" mat-stroked-button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
+                <div id="wrapper-add-vehicle">
+                    <button mat-stroked-button type="button" (click)="addAnotherVehicle()">+ Add Another Vehicle</button>
+                </div>
 
                 <hr />
                 <p>By typing your full legal name below, you agree to digitally sign the Towamensing Trails Property
@@ -110,7 +112,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="mt-large">
+                <div id="wrapper-submit">
                     <button mat-raised-button color="primary" id="submit" type="submit"
                     [disabled]="!registrationForm.valid">Submit</button>
                 </div>

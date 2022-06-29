@@ -11,8 +11,13 @@ hr {
     margin-bottom: 0 !important;
 }
 
+#title-address,
+#title-phone-number,
+#title-vehicles {
+    margin-top: $margin-medium - $margin-bottom-input !important;
+}
+
+#wrapper-add-vehicle,
 #wrapper-submit {
-    position: relative;
-    margin-bottom: 50px;
-    width: 80px;
+    margin-top: $margin-large - $margin-bottom-input;
 }
