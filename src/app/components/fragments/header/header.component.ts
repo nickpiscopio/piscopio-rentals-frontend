@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderService } from 'src/app/services/header.service';
+import { NavigationService, NavigationState } from 'src/app/services/navigation.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,10 +13,13 @@ export class HeaderComponent {
   propertyManagerPhoneNumber = environment.propertyManager.phoneNumber;
   propertyManagerEmail = environment.propertyManager.email;
 
-  constructor(private headerService: HeaderService) { }
+  constructor(
+    private navigationService: NavigationService,
+    private headerService: HeaderService
+  ) { }
 
   bookNow(): void {
-    window.open(environment.bookNow)
+    this.navigationService.navigateToPage(NavigationState.BOOK_NOW_CLICKED);
   }
 
   shouldShowContact(): boolean {

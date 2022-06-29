@@ -25,9 +25,12 @@ import { HomeComponent } from './components/views/home/home.component';
 import { HeaderComponent } from './components/fragments/header/header.component';
 import { FooterComponent } from './components/fragments/footer/footer.component';
 import { HeroComponent } from './components/fragments/hero/hero.component';
-import { HeaderService } from './services/header.service';
-import { LoadingService } from './services/loading.service';
 import { SwiperComponent } from './components/fragments/swiper/swiper.component';
+
+import { LoadingService } from './services/loading.service';
+import { NavigationService } from './services/navigation.service';
+import { HeaderService } from './services/header.service';
+import { FooterService } from './services/footer.service';
 
 @NgModule({
   declarations: [
@@ -62,8 +65,10 @@ import { SwiperComponent } from './components/fragments/swiper/swiper.component'
   ],
   providers: [
     DatePipe,
+    LoadingService,
+    NavigationService,
     HeaderService,
-    LoadingService
+    FooterService
   ],
   bootstrap: [ AppComponent ]
 })

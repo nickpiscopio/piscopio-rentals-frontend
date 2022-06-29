@@ -7,10 +7,10 @@ import { RegistrationService } from "src/app/services/communication/registration
 import { DateService } from "src/app/services/util/date.service";
 import { environment } from "src/environments/environment";
 import { GenericDialogComponent } from "../dialogs/generic-dialog/generic-dialog.component";
-import { Router } from "@angular/router";
 import { LoadingService } from "src/app/services/loading.service";
 import { HeaderService, HeaderState } from "src/app/services/header.service";
 import { FooterService } from "src/app/services/footer.service";
+import { NavigationService, NavigationState } from "src/app/services/navigation.service";
 
 @Component({
   selector: "app-registration",
@@ -34,8 +34,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private route: Router,
     private dateService: DateService,
+    private navigationService: NavigationService,
     private registrationService: RegistrationService,
     private headerService: HeaderService,
     private footerService: FooterService,
@@ -191,7 +191,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   private openSuccessPage(): void {
-    this.route.navigate(["/registration/success"]);
+    this.navigationService.navigateToPage(NavigationState.REGISTRATON_SUCCESSFUL);
   }
 
   private openVehicleLimitExceededDialog(): void {

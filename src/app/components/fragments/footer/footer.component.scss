@@ -2,16 +2,6 @@
 @import "src/styles/spacing.scss";
 @import "src/styles/typeface.scss";
 
-h1 {
-    margin-bottom: $margin-medium !important;
-    text-align: center;
-    text-transform: capitalize;
-    color: $color-white;
-    font-size: $font-size-header1;
-    font-weight: $font-bold;
-    line-height: $font-size-header1;
-}
-
 p {
     margin-bottom: 0 !important;
     color: $color-white;
@@ -46,6 +36,16 @@ a:hover {
     padding: 0 $margin-header-footer;
     background-color: $color-accent;
     color: $color-white;
+}
+
+#address {
+    margin-bottom: $margin-medium !important;
+    text-align: center;
+    text-transform: capitalize;
+    color: $color-white;
+    font-size: $font-size-header1;
+    font-weight: $font-bold;
+    line-height: $font-size-header1;
 }
 
 #copyright {

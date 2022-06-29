@@ -1,8 +1,8 @@
 <div id="wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <h1>153 Keats Lane Albrightsville, PA 18210</h1>
+            <div id="address" class="col-12">
+                <a (click)="getDirections()">153 Keats Lane Albrightsville, PA 18210</a>
             </div>
             <div *ngIf="shouldShowBookingAndPropertyManagerInfo()" class="col">
                 <p class="title">Already Booked?</p>
