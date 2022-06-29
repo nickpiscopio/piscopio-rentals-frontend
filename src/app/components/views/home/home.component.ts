@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FooterService } from "src/app/services/footer.service";
 import { HeaderService, HeaderState } from "src/app/services/header.service";
-import { NavigationService, NavigationState } from "src/app/services/navigation.service";
+import { NavigationService, NavigationUrl } from "src/app/services/navigation.service";
 import { environment } from "src/environments/environment";
 
 @Component({
@@ -22,11 +22,11 @@ export class HomeComponent implements OnInit {
   }
 
   navigateToAddress(): void {
-    this.navigationService.navigateToPage(NavigationState.PROPERTY_ADDRESS_CLICKED);
+    this.navigationService.navigateTo(NavigationUrl.PROPERTY);
   }
 
   bookNow(): void {
-    this.navigationService.navigateToPage(NavigationState.BOOK_NOW_CLICKED);
+    this.navigationService.navigateTo(NavigationUrl.BOOK_NOW);
   }
 
   getVehicleThreshold(): number {

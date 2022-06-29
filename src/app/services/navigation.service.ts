@@ -2,34 +2,39 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
-export enum NavigationState {
-    PROPERTY_ADDRESS_CLICKED,
-    BOOK_NOW_CLICKED,
+export enum NavigationUrl {
+    PROPERTY,
+    BOOK_NOW,
+    REGISTRATION,
     REGISTRATON_SUCCESSFUL,
-    HOA_FORM_URL_CLICKED
+    HOME
 }
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class NavigationService {
     directionsUrl = environment.directions;
 
     constructor(private router: Router) { }
 
-    navigateToPage(state: NavigationState): void {
+    navigateTo(state: NavigationUrl): void {
         switch (state) {
-            case NavigationState.BOOK_NOW_CLICKED:
+            case NavigationUrl.BOOK_NOW:
                 window.open(environment.bookNow)
                 return;
-            case NavigationState.PROPERTY_ADDRESS_CLICKED:
+            case NavigationUrl.PROPERTY:
                 window.open(this.directionsUrl, "_blank");
                 return;
-            case NavigationState.REGISTRATON_SUCCESSFUL:
+            case NavigationUrl.REGISTRATON_SUCCESSFUL:
                 this.router.navigateByUrl("/registration/success");
                 return;
-            case NavigationState.HOA_FORM_URL_CLICKED:
+            case NavigationUrl.REGISTRATION:
                 this.router.navigateByUrl("/registration");
+                return;
+            case NavigationUrl.HOME:
+            default:
+                this.router.navigateByUrl("");
                 return;
 
         }

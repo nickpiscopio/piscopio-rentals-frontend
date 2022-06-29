@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderService } from 'src/app/services/header.service';
-import { NavigationService, NavigationState } from 'src/app/services/navigation.service';
+import { NavigationService, NavigationUrl } from 'src/app/services/navigation.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -19,7 +19,11 @@ export class HeaderComponent {
   ) { }
 
   bookNow(): void {
-    this.navigationService.navigateToPage(NavigationState.BOOK_NOW_CLICKED);
+    this.navigationService.navigateTo(NavigationUrl.BOOK_NOW);
+  }
+
+  navigateHome(): void {
+    this.navigationService.navigateTo(NavigationUrl.HOME);
   }
 
   shouldShowContact(): boolean {

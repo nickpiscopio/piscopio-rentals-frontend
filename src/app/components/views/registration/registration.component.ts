@@ -10,7 +10,7 @@ import { GenericDialogComponent } from "../dialogs/generic-dialog/generic-dialog
 import { LoadingService } from "src/app/services/loading.service";
 import { HeaderService, HeaderState } from "src/app/services/header.service";
 import { FooterService } from "src/app/services/footer.service";
-import { NavigationService, NavigationState } from "src/app/services/navigation.service";
+import { NavigationService, NavigationUrl } from "src/app/services/navigation.service";
 
 @Component({
   selector: "app-registration",
@@ -19,8 +19,7 @@ import { NavigationService, NavigationState } from "src/app/services/navigation.
   providers: [
     DateService,
     RegistrationService
-  ],
-  encapsulation: ViewEncapsulation.Emulated
+  ]
 })
 export class RegistrationComponent implements OnInit {
   private registration: Registration | undefined
@@ -191,7 +190,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   private openSuccessPage(): void {
-    this.navigationService.navigateToPage(NavigationState.REGISTRATON_SUCCESSFUL);
+    this.navigationService.navigateTo(NavigationUrl.REGISTRATON_SUCCESSFUL);
   }
 
   private openVehicleLimitExceededDialog(): void {

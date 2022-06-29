@@ -1,7 +1,7 @@
 @import "spacing.scss";
 
 h1 {
-    margin-bottom: $margin-large !important;
+    margin-bottom: $margin-large  !important;
     text-transform: uppercase;
     color: #071805;
 }
@@ -11,14 +11,14 @@ h2 {
 }
 
 h3 {
-    margin-top: $margin-medium !important;
-    margin-bottom: $margin-normal !important;
+    margin-top: $margin-medium  !important;
+    margin-bottom: $margin-normal  !important;
     color: #071805;
 }
 
 h4 {
-    margin-top: $margin-medium !important;
-    margin-bottom: $margin-normal !important;
+    margin-top: $margin-medium  !important;
+    margin-bottom: $margin-normal  !important;
 }
 
 hr {
@@ -26,12 +26,17 @@ hr {
 }
 
 p {
-    margin-bottom: $margin-medium !important;
+    margin-bottom: $margin-medium  !important;
     color: #071805;
 }
 
+a:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
 .bold {
-    font-weight: 500;
+    font-weight: 500 !important;
 }
 
 .mt-large {
