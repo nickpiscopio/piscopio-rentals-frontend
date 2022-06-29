@@ -7,17 +7,44 @@ hr {
     width: 100%
 }
 
+h2 {
+    margin-bottom: $margin-medium;
+}
+
+.checkbox {
+    margin-top: 14px;
+    margin-bottom: $margin-bottom-input;
+}
+
+#description-2 {
+    margin-bottom: 0 !important;
+}
+
 #description-vehicles {
     margin-bottom: 0 !important;
 }
 
-#title-address,
-#title-phone-number,
-#title-vehicles {
+#title-address {
+    margin-top: 0;
+}
+
+#title-about-your-stay {
+    margin-bottom: 0 !important;
+}
+
+#title-phone-number {
     margin-top: $margin-medium - $margin-bottom-input !important;
 }
 
+#title-about-your-stay,
+#title-vehicles,
 #wrapper-add-vehicle,
 #wrapper-submit {
     margin-top: $margin-large - $margin-bottom-input;
+}
+
+@media (max-width: 768px) {
+    .checkbox {
+        margin-top: 0;
+    }
 }

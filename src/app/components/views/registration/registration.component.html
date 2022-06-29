@@ -2,7 +2,7 @@
     <mat-card>
         <h1>Registration Page</h1>
         <p>Thank you for booking with us! We greatly appreciate it!</p>
-        <p>We just need a bit more infomation for our HOA to create a welcome packet for you. It should only
+        <p id="description-2">We just need a bit more infomation for our HOA to create a welcome packet for you. It should only
             take a couple of minutes, and should be painless. Once completed, you should be good to go.</p>
         <form [formGroup]="registrationForm" (ngSubmit)="register()">
             <div class="row">
@@ -52,7 +52,7 @@
                     </mat-form-field>
                 </div>
 
-                <h2 class="mt-large">Information About Your Stay</h2>
+                <h2 id="title-about-your-stay">Information About Your Stay</h2>
                 <h3>Date Range of Stay</h3>
 
                 <div class="col-sm-auto col-md-4">
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="col-sm-auto col-md-3">
-                        <mat-checkbox class="mt-md-3 mt-sm-0" formControlName="vehicle{{i + 1}}Rental">This is a rental car</mat-checkbox>
+                        <mat-checkbox class="checkbox" formControlName="vehicle{{i + 1}}Rental">This is a rental car</mat-checkbox>
                     </div>
                 </div>
 
