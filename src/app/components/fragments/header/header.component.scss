@@ -45,3 +45,13 @@ p {
 #wrapper-book-now {
     text-align: end;
 }
+
+@media (max-width: 768px) {
+    .row {
+        text-align: center;
+    }
+
+    #wrapper-book-now {
+        text-align: center;
+    }
+}

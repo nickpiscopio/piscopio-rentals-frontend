@@ -1,15 +1,15 @@
 <div id="wrapper">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row justify-content-end">
             <div id="address" class="col-12">
                 <a (click)="getDirections()">153 Keats Lane Albrightsville, PA 18210</a>
             </div>
-            <div *ngIf="shouldShowBookingAndPropertyManagerInfo()" class="col">
+            <div *ngIf="shouldShowBookingAndPropertyManagerInfo()" class="col-sm-12 col-md mb-4 mb-md-0">
                 <p class="title">Already Booked?</p>
                 <p class="description">Do you still need to fill out the HOA rental form?</p>
                 <a (click)="navigateToRentalForm()">HOA RENTAL FORM</a>
             </div>
-            <div *ngIf="shouldShowBookingAndPropertyManagerInfo()" class="col-auto">
+            <div *ngIf="shouldShowBookingAndPropertyManagerInfo()" id="wrapper-contact" class="col-sm-12 col-md-auto">
                 <p class="title">{{propertyManager}}—24/7 Contact</p>
                 <p class="description">{{propertyManagerPhoneNumber}}</p>
                 <p>{{propertyManagerEmail}}</p>
