@@ -1,0 +1,33 @@
+@import "src/styles/color.scss";
+
+::ng-deep .swiper-wrapper {
+    width: 400px;
+}
+
+::ng-deep .swiper-slide {
+    margin: 0 25px;
+
+    img {
+        width: auto;
+        height: 400px;
+    }
+}
+
+@media (max-width: 1400px) {
+    ::ng-deep .swiper-slide {
+        margin: 0;
+        padding: 0 25px;
+    
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+@media (max-width: 686px) {
+    .swiper-previous,
+    .swiper-next {
+        display: none;
+    }
+}

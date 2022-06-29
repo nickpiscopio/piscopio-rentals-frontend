@@ -1,4 +1,4 @@
-<div class="container-sm-fluid container-lg">
+<div id="wrapper-welcome-description" class="container-sm-fluid container-lg">
     <mat-card>
         <h1>WELCOME TO 153 KEATS LANE!</h1>
         <p>Your next Pocono Mountains retreat awaits at this 3-bedroom, 2-bath Albrightsville vacation rental! This
@@ -30,32 +30,9 @@
     </mat-card>
 </div>
 
-<div id="wrapper-photos" class="container-sm-fluid container-lg">
-    <div class="row">
-        <div class="col">
-            <div class="col v-center">
-                <button mat-button class="swiper-previous">
-                    <mat-icon>chevron_left</mat-icon>
-                </button>
-            </div>
-
-            <div>
-                <swiper [config]="swiperConfig">
-                    <ng-template swiperSlide *ngFor="let image of images; let index = index"
-                        class="swiper-slide cursor-pointer">
-                        <img src="{{image}}" />
-                    </ng-template>
-                </swiper>
-            </div>
-
-            <div id="wrapper-next" class="col v-center">
-                <button mat-button class="swiper-next">
-                    <mat-icon>chevron_right</mat-icon>
-                </button>
-            </div>
-        </div>
-
-        <div class="pagination"></div>
+<div id="wrapper-photos" class="shadow-sm">
+    <div class="container-sm-fluid container-lg">
+        <app-swiper></app-swiper>
     </div>
 </div>
 

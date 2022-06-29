@@ -27,6 +27,7 @@ import { FooterComponent } from './components/fragments/footer/footer.component'
 import { HeroComponent } from './components/fragments/hero/hero.component';
 import { HeaderService } from './services/header.service';
 import { LoadingService } from './services/loading.service';
+import { SwiperComponent } from './components/fragments/swiper/swiper.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoadingService } from './services/loading.service';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    HeroComponent
+    HeroComponent,
+    SwiperComponent
   ],
   imports: [
     BrowserModule,

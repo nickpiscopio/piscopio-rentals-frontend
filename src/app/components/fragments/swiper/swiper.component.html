@@ -1,0 +1,22 @@
+<div class="row align-items-center">
+    <div class="col-auto">
+        <button mat-icon-button class="swiper-previous">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+    </div>
+
+    <div class="col">
+        <swiper [config]="swiperConfig">
+            <ng-template swiperSlide *ngFor="let image of images; let index = index"
+                class="swiper-slide cursor-pointer">
+                <img src="{{image}}" />
+            </ng-template>
+        </swiper>
+    </div>
+
+    <div class="col-auto">
+        <button mat-icon-button class="swiper-next">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+</div>

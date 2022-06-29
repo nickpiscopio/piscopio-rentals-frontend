@@ -6,6 +6,10 @@ span {
     font-weight: $font-bold;
 }
 
+#wrapper-welcome-description {
+    margin-bottom: $margin-extra-large;
+}
+
 #title-additional-details {
     margin-bottom: $margin-small !important;
     color: $color-accent;
@@ -23,11 +27,13 @@ span {
 }
 
 #wrapper-photos {
+    margin-bottom: $margin-extra-large;
+    padding-top: $margin-large;
+    padding-bottom: $margin-large;
     background-color: $color-white;
 }
 
 #wrapper-check-availability {
-    margin-top: $margin-medium;
     text-align: center;
 
     h2 {
@@ -36,34 +42,3 @@ span {
         font-weight: $font-semi-bold;
     }
 }
-
-.swiper-previous, .swiper-next {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .v-center {
-    justify-content: center;
-  }
-  
-  .pagination {
-    text-align: center;
-  }
-  
-  ::ng-deep .swiper-pagination-bullet {
-    // margin: $spacing-large-xx ($spacing-medium / 2) $spacing-ridiculous ($spacing-medium / 2);
-    height: 12px !important;
-    width: 12px !important;
-    background: $color-white !important;
-    mix-blend-mode: soft-light !important;
-  
-    &.swiper-pagination-bullet-active {
-      mix-blend-mode: normal !important;
-    }
-  }
-  
-  @media (max-width: 686px) {
-    .swiper-previous, .swiper-next {
-      display: none;
-    }
-  }
