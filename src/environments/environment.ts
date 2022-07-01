@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  domain: "http://127.0.0.1:3000",
+  domain: "http://localhost:3000",
   bookNow: "https://evolve.com/vacation-rentals/469273",
   directions: "https://www.google.com/maps/place/153+Keats+Ln,+Albrightsville,+PA+18210",
   vehicleThreshold: 4,

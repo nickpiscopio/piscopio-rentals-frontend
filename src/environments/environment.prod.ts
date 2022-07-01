@@ -1,6 +1,9 @@
 export const environment = {
   production: true,
-  domain: "https://www.keatslanerentals.com",
+  // Create a reverse proxy for this to work in synology:
+  // https://www.mihaiblaga.dev/synology-built-in-reverse-proxy
+  // domain: "https://www.keatslanerentals.com",
+  domain: "https://192-168-1-249.redhoneybadger.direct.quickconnect.to:3030",
   bookNow: "https://evolve.com/vacation-rentals/469273",
   directions: "https://www.google.com/maps/place/153+Keats+Ln,+Albrightsville,+PA+18210",
   vehicleThreshold: 4,

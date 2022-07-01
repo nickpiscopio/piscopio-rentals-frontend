@@ -90,6 +90,7 @@ export class RegistrationComponent implements OnInit {
         this.openErrorDialog()
 
         console.error("Error submitting registration form: ", error);
+        console.error("Registration: ", JSON.stringify(this.registration));
 
         this.setLoading(false)
       }
