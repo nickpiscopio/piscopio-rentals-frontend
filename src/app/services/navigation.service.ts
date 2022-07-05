@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 export enum NavigationUrl {
     PROPERTY,
@@ -11,7 +11,7 @@ export enum NavigationUrl {
 }
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: "root",
 })
 export class NavigationService {
     directionsUrl = environment.directions;
