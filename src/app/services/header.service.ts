@@ -18,10 +18,9 @@ export class HeaderService {
 
     shouldShowContact(): boolean {
         switch (this.state) {
-            case HeaderState.REGISTRATON_SUCCESS:
-                return false;
             case HeaderState.HOME:
             case HeaderState.REGISTRATION:
+            case HeaderState.REGISTRATON_SUCCESS:
             default:
                 return true;
             

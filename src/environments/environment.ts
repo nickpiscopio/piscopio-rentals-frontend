@@ -12,6 +12,11 @@ export const environment = {
     name: "Dottie Grefe",
     phoneNumber: "(484) 661-7106",
     email: "dorothygrefe@gmail.com"
+  },
+  propertyOwner: {
+    name: "Sarah",
+    phoneNumber: "(267) 580-9279",
+    email: "KeatsLaneRental@gmail.com"
   }
 };
 

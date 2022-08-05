@@ -9,9 +9,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./success.component.scss']
 })
 export class SuccessComponent implements OnInit {
-  propertyManagerName = environment.propertyManager.name;
-  propertyManagerPhoneNumber = environment.propertyManager.phoneNumber;
-  propertyManagerEmail = environment.propertyManager.email;
+  propertyOwnerName = environment.propertyOwner.name;
+  propertyOwnerPhoneNumber = environment.propertyOwner.phoneNumber;
+  propertyOwnerEmail = environment.propertyOwner.email;
 
   constructor(private headerService: HeaderService, private footerService: FooterService) { }
 

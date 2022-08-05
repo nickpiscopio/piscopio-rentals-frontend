@@ -211,7 +211,7 @@ export class RegistrationComponent implements OnInit {
   private openErrorDialog(): void {
     this.openDialog(
       "An Error Occurred",
-      `There was an error when submitting the registration form. Please try again later or contact:\n\n${environment.propertyManager.name}\n${environment.propertyManager.phoneNumber}\n${environment.propertyManager.email}`,
+      `There was an error when submitting the registration form. Please try again later or contact:\n\n${environment.propertyOwner.name}\n${environment.propertyOwner.phoneNumber}\n${environment.propertyOwner.email}`,
     );
   }
 
